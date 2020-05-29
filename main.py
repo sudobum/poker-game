@@ -6,7 +6,7 @@ Created on Tue Mar 24 14:48:07 2020
 @author: kash-py
 """
 import random
-
+import uuid
 
 
 class Card( object ):
@@ -53,27 +53,45 @@ class StandardDeck(list):
     
     
 class Player(object):
-    def __init__(self):
+    def __init__(self, name):
         self.cards = []
+        self.name = name
     def __repr__(self):
-        return '{}'.format(self.cards)
+        return 'Player:{} Hand:{}'.format(self.name, self.cards)
 
 
 
 
 
 class Table(object):
-    def __init__(self,):
-        self.cards = []
-    def __rep__(self):
-        return '{}'.format(self.cards)
-
-
-class DealHand(object):
-    def __init__(self,):
-        self.player = Player()
+    def __init__(self,number_of_players=3):
         self.deck = StandardDeck()
-        
+        self.deck.shuffle()
+        self.cards = []
+        self.players = []
+        for i in range(number_of_players):
+            random_name = str(uuid.uuid1()).split('-')[0]
+            self.players.append(Player(random_name))
+            
+    def __repr__(self):
+        return '{}{}'.format(self.cards, self.players)
+    
+    def deal_to_players(self):
+        for player in self.players:
+            player.cards.append(self.deck.deal())
+            
+    def deal_table_flop(self):
+        for i in range(3):
+            self.cards.append(self.deck.deal())
+            
+    def deal_table_turn(self):
+            self.cards.append(self.deck.deal())
+            
+    def deal_table_river(self):
+            self.cards.append(self.deck.deal())        
+
+
+
         
 
 

@@ -5,7 +5,9 @@ Created on Thu May 28 16:12:54 2020
 
 @author: kash-py
 """
+import uuid
 
+print()
 
     
 def highcard(lst):
