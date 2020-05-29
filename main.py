@@ -10,11 +10,12 @@ import random
 
 
 class Card( object ):
+    
     def __init__(self,name, value, suit):
         self.value = value
         self.suit = suit
         self.name = name
-        self.showing = False
+        self.showing = True
         
     def __repr__(self):
         if self.showing:
@@ -51,6 +52,35 @@ class StandardDeck(list):
         
     
     
+class Player(object):
+    def __init__(self):
+        self.cards = []
+    def __repr__(self):
+        return '{}'.format(self.cards)
+
+
+
+
+
+class Table(object):
+    def __init__(self,):
+        self.cards = []
+    def __rep__(self):
+        return '{}'.format(self.cards)
+
+
+class DealHand(object):
+    def __init__(self,):
+        self.player = Player()
+        self.deck = StandardDeck()
+        
+        
+
+
+
+
+
+
 
 
 
